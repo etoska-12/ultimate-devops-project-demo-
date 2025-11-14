@@ -76,16 +76,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: update tag in kubernetes deployment file
-          run: |
-            sed -i 's|image: .*|image: '"${{ secrets.DOCKER_USERNAME }}"'/product-catalog:'"${{ github.run_id }}"'|' kubernetes/product-catalog-deployment.yaml
- 
-      
-         
+        run: |
+          sed -i 's|image: .*|image: '"${{ secrets.DOCKER_USERNAME }}"'/product-catalog:'"${{ github.run_id }}"'|' kubernetes/product-catalog-deployment.yaml
 
-
-
-         - name: commit and push changes
-          run: |
+      - name: commit and push changes
+        run: |
           git config --global user.email "yezindagi1234@gmail.com"
           git config --global user.name "etoska-12"
           git add kubernetes/product-catalog-deployment.yaml
