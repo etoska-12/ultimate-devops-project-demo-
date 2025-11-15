@@ -75,7 +75,8 @@ jobs:
 
       - name: update tag in kubernetes deployment file
         run: |
-           sed -i "s|image: .*|image: ${IMAGE}|g" kubernetes/productcatalog-deployment.yaml
+          IMAGE="${{ secrets.DOCKER_USERNAME }}/product-catalog:${{ github.run_id }}"
+          sed -i "s|image: .*|image: ${IMAGE}|g" kubernetes/productcatalog-deployment.yaml
       - name: commit and push changes
         run: |
           git config --global user.email "yezindagi1234@gmail.com"
