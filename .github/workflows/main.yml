@@ -1,13 +1,14 @@
 # CI for Product Catalog Service
 
+
 name: product-catalog-ci
 
 on: 
     push:
         branches:
         - main
-        paths:
-        - '**/*'
+           paths:
+           '**/*'
 
 jobs:
     build:
@@ -96,9 +97,10 @@ jobs:
         
         - name: Commit and push changes
           run: |
-            git config --global user.email "yezindgi1234@gmail.com"
+            git config --global user.email "yezindagi1234@gmail.com"
             git config --global user.name "etoska-12"
             git add kubernetes/productcatalog/deploy.yaml
             git commit -m "[CI]: Update product catalog image tag"
-            git push origin HEAD:main -f 
+            git push origin HEAD:main -f
+
 
