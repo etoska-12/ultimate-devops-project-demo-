@@ -4,8 +4,8 @@ name: product-catalog-ci
 on: 
   push:
     branches:
-    - main
-     paths:'**/*'  
+     - main
+     
 
 jobs:
   build:
