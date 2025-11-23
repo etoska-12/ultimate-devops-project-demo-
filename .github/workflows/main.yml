@@ -69,8 +69,8 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
-          context: src/product-catalog
-          file: src/product-catalog/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}product-catalog:${{ github.run_id }}
 
