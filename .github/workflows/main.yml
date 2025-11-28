@@ -73,7 +73,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/kambleamitwork/product-catalog:${{ github.run_id }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/kambleamitworketoska-12/product-catalog:19760402800product-catalog:${{ github.run_id }}
 
   updatek8s:
     runs-on: ubuntu-latest
