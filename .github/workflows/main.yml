@@ -74,24 +74,4 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{ github.run_id }}
 
-  updatek8s:
-    runs-on: ubuntu-latest
-    needs: docker
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update tag in Kubernetes manifest
-        run: |
-          sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{ github.run_id }}|"kubernetes/productcatalog/deploy.yaml
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.email "yezindagi1234@gmail.com"
-          git config --global user.name "Amit kamble"
-          git add kubernetes/productcatalog/deploy.yaml
-          git commit -m "[CI]: Update product catalog image tag"
-          git push origin HEAD:main -f 
+ 
