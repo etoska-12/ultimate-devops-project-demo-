@@ -70,10 +70,10 @@ jobs:
       - name: Docker build push action
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./Dockerfile
+          context: 
+          file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/kambleamitworketoska-12/product-catalog:19760402800product-catalog:${{ github.run_id }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/product-catalog:19760402800product-catalog:${{ github.run_id }}
 
   updatek8s:
     runs-on: ubuntu-latest
@@ -87,7 +87,7 @@ jobs:
 
       - name: Update tag in kubernetes deployment manifest
         run: | 
-          sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/kambleamitwork/product-catalog:${{ github.run_id }}|" kubernetes/productcatalog/deploy.yaml
+          sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{ github.run_id }}|" kubernetes/productcatalog/deploy.yaml
         
       - name: Commit and push changes
         run: |
